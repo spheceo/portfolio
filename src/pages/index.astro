@@ -17,19 +17,19 @@ const links = [
 ---
 
 <Layout>
-	<div class="max-w-xs w-full mx-auto">
+	<div class="max-w-xs w-full mx-auto motion-delay-500 motion-blur-in-xl motion-duration-500">
 		<!-- Header -->
-		<header class="mb-16">
+		<header class="mb-16 motion-delay-500 motion-opacity-in-0 motion-translate-y-in-150">
 			<h1 class="text-xl">sphe</h1>
 			<p class="text-muted mt-1 text-sm">building great products.</p>
 		</header>
 
 		<!-- Links -->
 		<nav class="flex flex-col w-full gap-5">
-			{links.map((l) => (
-				<div class="group w-full cursor-pointer">
+			{links.map((l, i) => (
+				<div style={`--motion-delay: ${700 + i * 200}ms`} class="group w-full cursor-pointer motion-opacity-in-0 motion-translate-y-in-150">
 					<div class="flex items-center justify-between">
-						<a href={l.href} class="text-subtle block transition-all duration-400 hover:text-foreground" target={clsx(l.href.startsWith("http") ? "_blank" : undefined)}>
+						<a href={l.href} class="text-subtle block my-1 transition-all duration-400 hover:text-foreground" target={clsx(l.href.startsWith("http") ? "_blank" : undefined)}>
 							{l.name}
 						</a>
 						<span class="transition-all duration-400 opacity-0 group-hover:opacity-100 text-muted">
