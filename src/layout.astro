@@ -1,6 +1,9 @@
 ---
 import { Font } from "astro:assets";
+import clsx from "clsx";
 import "./globals.css";
+
+const { class: bodyClass = "" } = Astro.props;
 ---
 
 <html lang="en">
@@ -13,7 +16,7 @@ import "./globals.css";
 		<meta name="description" content="building great products.">
         <Font cssVariable="--font-site" preload />
 	</head>
-	<body class="flex flex-col justify-center items-center h-dvh selection:bg-selection">
+	<body class={clsx("h-dvh selection:bg-selection", bodyClass)}>
         <slot />
 	</body>
 </html>
