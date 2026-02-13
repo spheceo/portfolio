@@ -1,7 +1,7 @@
 ---
 import Layout from "../layout.astro";
-import { FiExternalLink } from "react-icons/fi";
 import clsx from "clsx"
+import { MdArrowOutward } from "react-icons/md";
 
 const links = [
 	{
@@ -29,10 +29,15 @@ const links = [
 ---
 
 <Layout>
+    <div class="h-dvh w-dvw absolute -z-10 overflow-hidden motion-delay-500 motion-preset-fade motion-duration-5000">
+        <div class="absolute bottom-0 z-10 bg-linear-to-t from-black to-transparent w-full h-1/12"/>
+      <img src={`/cover/01.png`} class="absolute object-cover opacity-100 top-100"/>
+    </div>
+    
 	<div class="max-w-xs w-full mx-auto motion-delay-500 motion-blur-in-xl motion-duration-500">
 		<!-- Header -->
 		<header class="mb-16 motion-delay-500 motion-opacity-in-0 motion-translate-y-in-150">
-			<h1 class="text-xl">sphe</h1>
+			<h1 class="text-2xl">sphe</h1>
 			<p class="text-muted mt-1 text-sm">building great products.</p>
 		</header>
 
@@ -45,7 +50,7 @@ const links = [
 							{l.name}
 						</a>
 						<span class="transition-all duration-400 opacity-0 group-hover:opacity-100 text-muted">
-							<FiExternalLink size={14}/>
+							<MdArrowOutward size={14}/>
 						</span>
 					</div>
 					<div class="bg-white h-px transition-all duration-400 ease-in-out origin-left scale-x-0 group-hover:scale-x-100" />

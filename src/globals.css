@@ -12,5 +12,5 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-site);
 }
