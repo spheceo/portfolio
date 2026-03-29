@@ -1,0 +1,37 @@
+---
+import { IoIosArrowRoundBack } from "react-icons/io";
+import Layout from "../layout.astro";
+
+const discord_link = "https://discord.gg/ZHdMxRTnCK"
+---
+
+<Layout>
+    <!-- Cover image -->
+    <div class="h-dvh w-dvw absolute -z-10 overflow-hidden motion-delay-500 motion-preset-fade motion-duration-5000">
+        <div class="absolute bottom-0 z-10 bg-linear-to-t from-background/90 to-transparent w-full h-1/7"/>
+        <div class="absolute top-90 z-10 bg-linear-to-b from-background/90 to-transparent w-full h-1/7"/>
+        <img src="/cover/02.png" class="absolute object-cover opacity-100 top-90"/>
+    </div>
+
+    <!-- Main Content -->
+    <div class="h-dvh flex flex-col gap-6 w-4xl mx-auto py-15 motion-delay-200 motion-blur-in-xl motion-duration-900">
+        <!-- <div class="flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl">discord</h1>
+                <p class="text-muted mt-1">my free community</p>
+            </div>
+            <a class="bg-foreground text-background px-4 py-2 rounded-xl h-fit" target="_blank" href={discord_link}>join for free</a>
+        </div> -->
+        
+        <a class="mt-10 text-muted gap-2 flex items-center transition-all duration-300 hover:text-foreground mx-auto motion-delay-400 motion-opacity-in-0" href="/">
+            <IoIosArrowRoundBack size={25}/>
+            <p>back</p>
+        </a>
+        
+        <div class="mt-10 rounded-2xl flex flex-col justify-center items-center gap-3">
+            <h1 class="text-4xl motion-delay-200 motion-duration-1200 motion-opacity-in-0 motion-translate-y-in-150">kuro | community</h1>
+            <p class="w-xl text-center text-subtle motion-delay-500 motion-duration-1200 motion-opacity-in-0 motion-translate-y-in-150">join a community of developers building with ai and code. share what you’re working on, get useful feedback, and discuss ideas, tools, and automation with others.</p>
+            <a class="bg-foreground text-background px-4 py-2 rounded-xl h-fit mt-2 transition-all duration-300 hover:scale-105 motion-delay-800 motion-duration-1200 motion-opacity-in-0 motion-translate-y-in-150" data-analytics-name="discord_join" target="_blank" href={discord_link}>join for free</a>
+        </div>
+    </div>
+</Layout>

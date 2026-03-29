@@ -2,7 +2,6 @@
 import { Font } from "astro:assets";
 import clsx from "clsx";
 import "./styles/globals.css"
-import Posthog from "./components/posthog.astro";
 
 const { class: bodyClass = "" } = Astro.props;
 ---
@@ -16,9 +15,42 @@ const { class: bodyClass = "" } = Astro.props;
 		<title>sphe</title>
 		<meta name="description" content="creating things i wish existed.">
         <Font cssVariable="--font-site" preload />
-		<Posthog />
 	</head>
 	<body class={clsx("h-dvh selection:bg-selection", bodyClass)}>
+        <script>
+            fetch("/api/analytics", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    type: "page_view",
+                    path: window.location.pathname,
+                }),
+                keepalive: true,
+            });
+
+            document.addEventListener("click", (event) => {
+                const target = event.target instanceof Element
+                    ? event.target.closest("[data-analytics-name]")
+                    : null;
+
+                if (!target) return;
+
+                const name = target.getAttribute("data-analytics-name");
+
+                if (!name) return;
+
+                fetch("/api/analytics", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        type: "button_click",
+                        path: window.location.pathname,
+                        name,
+                    }),
+                    keepalive: true,
+                });
+            });
+        </script>
         <slot />
 	</body>
 </html>

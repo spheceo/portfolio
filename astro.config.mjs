@@ -8,14 +8,10 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  
-  experimental: {
-    fonts: [{
-      provider: fontProviders.google(),
-      name: "Geist Mono",
-      cssVariable: "--font-site",
-    }]
-  },
-
+  fonts: [{
+    provider: fontProviders.google(),
+    name: "Geist Mono",
+    cssVariable: "--font-site",
+  }],
   integrations: [react()]
 });
