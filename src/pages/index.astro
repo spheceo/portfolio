@@ -1,26 +1,33 @@
 ---
 import Layout from "../layout.astro";
 import clsx from "clsx"
-import { IoIosArrowForward } from "react-icons/io";
 import { MdArrowOutward } from "react-icons/md";
 
-const links = [
-    {
-		name: "discord",
-		href: "/discord",
-		analyticsName: "discord_link"
+const primaryLinks = [
+	{
+		name: "create-stk",
+		href: "https://stk.spheceo.com",
+		analyticsName: "create_stk_link",
 	},
+	{
+		name: "clip",
+		href: "https://clip.spheceo.com",
+		analyticsName: "clip_link",
+	},
+];
+
+const secondaryLinks = [
 	{
 		name: "github",
 		href: "https://github.com/spheceo",
-		analyticsName: "github_link"
+		analyticsName: "github_link",
 	},
 	{
 		name: "twitter",
 		href: "https://x.com/spheceo",
-		analyticsName: "twitter_link"
-	}
-]
+		analyticsName: "twitter_link",
+	},
+];
 
 ---
 
@@ -39,20 +46,45 @@ const links = [
 		</header>
 
 		<!-- Links -->
-		<nav class="flex flex-col w-full gap-5">
-			{links.map((l, i) => (
-				<div style={`--motion-delay: ${700 + i * 200}ms`} class="group w-full cursor-pointer motion-opacity-in-0 motion-translate-y-in-150">
-					<div class="flex items-center justify-between">
-						<a href={l.href} data-analytics-name={l.analyticsName} class="text-subtle block my-1 transition-all duration-400 group-hover:text-foreground" target={clsx(l.href.startsWith("http") ? "_blank" : undefined)}>
-							{l.name}
-						</a>
-						<span class="transition-all duration-400 opacity-0 group-hover:opacity-100 text-muted">
-							{l.href.startsWith("http") ? <MdArrowOutward size={14}/> : <IoIosArrowForward size={14}/>}
-						</span>
+		<nav class="flex flex-col w-full">
+			<div class="flex flex-col gap-5">
+				{primaryLinks.map((l, i) => (
+					<div style={`--motion-delay: ${700 + i * 200}ms`} class="group w-full cursor-pointer motion-opacity-in-0 motion-translate-y-in-150">
+						<div class="flex items-center justify-between">
+							<a
+								href={l.href}
+								data-analytics-name={l.analyticsName}
+								class="text-subtle block my-1 transition-all duration-400 group-hover:text-foreground"
+								target={clsx(l.href.startsWith("http") ? "_blank" : undefined)}
+								rel={clsx(l.href.startsWith("http") ? "noreferrer noopener" : undefined)}
+							>
+								<span>{l.name}</span>
+							</a>
+							<span class="transition-all duration-400 opacity-0 group-hover:opacity-100 text-muted">
+								<MdArrowOutward size={14}/>
+							</span>
+						</div>
+						<div class="bg-foreground h-px transition-all duration-400 ease-in-out origin-left scale-x-0 group-hover:scale-x-100" />
 					</div>
-					<div class="bg-foreground h-px transition-all duration-400 ease-in-out origin-left scale-x-0 group-hover:scale-x-100" />
-				</div>
-			))}
+				))}
+			</div>
+
+			<div class="mt-14 mb-8 h-px bg-muted/60 motion-delay-900 motion-opacity-in-0 motion-duration-700" />
+
+			<div class="flex flex-row flex-wrap gap-x-6 gap-y-2">
+				{secondaryLinks.map((l, i) => (
+					<a
+						style={`--motion-delay: ${900 + i * 160}ms`}
+						href={l.href}
+						data-analytics-name={l.analyticsName}
+						class="text-muted transition-colors duration-300 hover:text-foreground motion-opacity-in-0 motion-translate-y-in-150"
+						target={clsx(l.href.startsWith("http") ? "_blank" : undefined)}
+						rel={clsx(l.href.startsWith("http") ? "noreferrer noopener" : undefined)}
+					>
+						{l.name}
+					</a>
+				))}
+			</div>
 		</nav>
 	</div>
 </Layout>

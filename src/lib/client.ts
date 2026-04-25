@@ -1,8 +1,8 @@
 import { createClient, type RedisClientType } from "redis";
-import { env } from "./env";
+import { REDIS_URL } from "astro:env/server";
 
 const client: RedisClientType = createClient({
-  url: env.REDIS_URL,
+  url: REDIS_URL,
 });
 
 let connectPromise: Promise<RedisClientType> | null = null;
